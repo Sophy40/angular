@@ -1,0 +1,28 @@
+<div>
+    <form action="javascript:void">
+        <div class="form-group">
+            <label for="prodId">Product Id:</label>
+        <input class="form-control" required minlength="2" (input)="void" #productId='ngModel' [(ngModel)]="prodId" id="prodId" type="text" name="prodId">
+        <!-- Product Id: {{productId.value}} <br />
+        valid:{{productId:valid}}
+        Dirty:{{productId:dirty}} -->
+        <span *ngIf="productId.invalid && (productId.dirty || productId.touched)" class="alert alert-danger">
+            <div *ngIf="productId.errors.required ">
+                product Id required
+            </div>
+            <div *ngIf="productId.errors.minlength ">
+                product Id should be 2 digits
+            </div>
+        </span>
+    </div>
+    <div class="form-group">
+        <label for="stock">Stock Id:</label>
+        <input class="form-control"  required minlength="2" (input)="void" #stockNum='ngModel' [(ngModel)]="stock" id="stock" type="text" name="stock">
+        Stock Id:{{stockNum.value}} <br />
+        Valid:{{stockNum.valid}} <br />
+        Drity:{{stockNum.drity}}
+
+    </div>
+<button type="submit" [disabled]="productId.invalid || stockNum.invalid"></button>
+    </form>
+</div>
