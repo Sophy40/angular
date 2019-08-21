@@ -1,105 +1,67 @@
-<ng-template #templateTitle let-text="title">
-    <h4 class="p-2 bg-success text-white">{{text}}</h4>
-    <fa name="cog" animation="spin" style="font-size: 3em"></fa>
-</ng-template>
 
 
-<ng-template [ngTemplateOutlet]="templateTitle"
-[ngTemplateOutletContext]="{'title':'Header'}"></ng-template>
-
-
-<div class="container">
-    <div id="ProducrtEntryForm" class="col-sm-12">ProductEntryForm
-        <div class="col-sm-6 col">
-            <label for="pid">
-               Enter ProductId:
-            </label>
+<form [formGroup]="prdForm" action="javascript:void">
+        <div class="panel panel-primary">
+          <div class="panel-heading"> Product Info:</div>
+        <div class="form-group row">
+          <label class="col-sm-3" for="prodId">ProductID:</label>
+          <input class="form-control col-sm-6" type="text" name="ProdId" formControlName="prdId" id="prodId">
         </div>
-        <div class="col-sm-6">
-            <input type="text" name="pid" #pid>
-        </div>
-    </div>
-    <div id="ProducrtEntryForm" class="col-sm-12">
-        <div class="col-sm-6">
-            <label for="pname">
-                Enter ProductName:
-            </label>
-        </div>
-        <div class="col-sm-6">
-            <input type="text" name="pname" #pname>
-        </div>
-    </div>
-    <div id="saveProduct" class="col-sm-12 row">
-            <div class="col" style="text-align: center;">
-            <button class="btn-primary" (click)="saveProduct(pid.value, pname.value)">Save Product</button>
-        </div>
-</div>
-
-<div [ngSwitch]="done">
-        <span *ngSwitchCase="true">Matched True for Yes</span>
-        <span *ngSwitchDefault>Default if done is False</span>
-    </div>
-    <div id="Productlisting" class="col-sm-12">Productlisting
-            <div class="col-sm-12" *ngFor="let product of productArray">
-                    id: {{product.pid}} <br />
-                    name : {{product.pname}}
+        <div class="form-group row">
+            <label class="col-sm-3" for="prodName">Product Name:</label>
+            <input class="form-control col-sm-6" [class]="{'hass-error': true}" type="text" name="prodName" formControlName="prdName" id="prodName">
+          </div>
+          <header>Add Sku</header>
+          <div formGroupName="skills">
+          <div class="form-group row">
+              <label class="col-sm-3" for="skuId">Sku Id:</label>
+              <input class="form-control col-sm-6" type="text" name="skuid" formControlName="skuId" id="skuId" >
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3" for="skuName">Sku Name:</label>
+                <input class="form-control col-sm-6" type="text" name="skuName" formControlName="skuName" id="skuName">
               </div>
-            
-        </div>
-        </div>
-        <ng-template [ngTemplateOutlet]="templateTitle"
-        [ngTemplateOutletContext]="{'title':'Footer'}"></ng-template>
-
-    <p [ngStyle]="{'color':myColor, 'fontweight':myFont}">Red and Bold</p>
-
-    <!-- <select name='mycolor' (click)="disabled=$event.target.value; updateStyle();"> -->
-        
-    <!-- <select name='mycolor' (click)="as=style=$event.target.value; updateStyle();"> -->
-            <select name='as1' (click)="as1=$event.target.value; updateStyle();">
-
-        <!-- <option name="true">disabled</option>
-        <option name="false">not disabled</option> -->
-        <option name="green">green</option>
-        <option name="blue">blue</option>
-    </select>
-    <!-- <h1>{{text}}</h1>
-    <h1 [innerText]="text"></h1> -->
-    <h1 [ngClass]="obj" [innerText]="text"></h1>
-
-<!-- <h1 [className]="disabled == 'true' ? 'blueBoldDisabled':'blueBold'" [innertext]="text"></h1>
-     -->
-     <ul>
-         <li *ngFor="let pitem of _productList"></li>
-         
-     </ul>
-     <div id='error' *ngFor='let e of error messages'></div>
-
-
-
-     <header>
-         Product Entry
-     </header>
-   
-     <form [formGroup]="prodForm" action="javascript:void">
-         <div class="form-group">
-             <label class="form-contro l" for="prodId">ProductID:</label>
-             <input class="form-control" type="text" formControlName="prodId" id="prodId" >
-         </div>
-
-         <div class="form-group">
-            <label class="form-control" for="prodName">ProductName:</label>
-            <input class="form-control" type="text" formControlName="prodName"id="prodName" >
-        </div>
-        <header>
-            Add Sku
-        </header>
-        <div class="form-group">
-            <label class="form-control" for="SkuId">SkuId:</label>
-            <input class="form-control" type="text" formControlName="SkuId" id="SkuId" >
-        </div>
-        <div class="form-group">
-            <label class="form-control" for="SkuName">SkuID:</label>
-            <input class="form-control" type="text"  formControlName="SkuName" id="SkuName" >
-        </div>
-        <button {click}="saveProduct()"> submit:</button>
-     </form>
+            </div>
+      
+            <button (click)="saveProduct()"> submit:</button>  
+            <button (click)="logKeyValues()"> Log Key Values:</button>  
+          </div>
+      </form>
+      
+      <table border="1">
+        <tr>
+          <td>
+            Product id
+          </td>
+          <td>
+            Productid dirty
+          </td>
+          <td>
+              Productid Valid
+            </td>
+          <td>
+            Product Name
+          </td>
+        </tr>
+        <tr>
+          <td>
+              {{prdForm.get('prdId').value}}
+          </td>
+          <td>
+              {{prdForm.dirty}}
+          </td>
+          <td>
+              {{prdForm.valid}}
+          </td>
+          <td>
+              {{prdForm.get('prdName').value}}
+          </td>
+        </tr>
+      </table>
+      
+      <ul>
+        <li *ngFor="let pitem of _productList">
+          Name = {{pitem.name}},
+          Id = {{pitem.id}}
+        </li>
+      </ul>

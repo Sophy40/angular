@@ -1,5 +1,5 @@
 <div>
-    <form action="javascript:void">
+    <form #product="ngForm" action="javascript:void">
         <div class="form-group">
             <label for="prodId">Product Id:</label>
         <input class="form-control" required minlength="2" (input)="void" #productId='ngModel' [(ngModel)]="prodId" id="prodId" type="text" name="prodId">
@@ -23,6 +23,6 @@
         Drity:{{stockNum.drity}}
 
     </div>
-<button type="submit" [disabled]="productId.invalid || stockNum.invalid"></button>
+<button type="submit" (click)='saveForm(product)' [disabled]="productId.invalid || stockNum.invalid"></button>
     </form>
 </div>

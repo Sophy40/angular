@@ -15,7 +15,7 @@ valdMsg={'login':{
   'minlenght':'password should be min 6 characters'
 }
 }
-formErrors={login:{required:'',minlenght:''}, password:{required:'',minlenght:''}}
+formErrors={login:{required:undefined,minlenght:undefined}, password:{required:undefined,minlenght:undefined}}
   constructor() { }
 
   ngOnInit() {

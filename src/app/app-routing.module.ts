@@ -1,16 +1,19 @@
+
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
-import { ScalculatorComponent } from './s-calculator/s-calculator.component';
-
-
-import { CalculatorComponent } from './calculator/calculator.component';
+import { ProductdisplayComponent } from './productdisplay/productdisplay.component';
+import { InventoryComponentComponent } from './inventory-component/inventory-component.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ProductEntryComponent } from './product-entry/product-entry.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  { path: 'scalc',      component: ScalculatorComponent },
-  { path: 'calc',      component: CalculatorComponent },
-{ path: 'login', component: LoginComponent}
+  {'path':'product-entry', 'component': ProductEntryComponent},
+  {'path':'','component': ProductdisplayComponent},
+  {'path':'product-display','component': ProductdisplayComponent},
+  {'path':'inventory','component': InventoryComponentComponent},
+  {path:'login',component: LoginComponent},
+  {'path':'**','component':PageNotFoundComponent}
 ];
 
 @NgModule({

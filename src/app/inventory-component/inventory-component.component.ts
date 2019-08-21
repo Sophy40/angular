@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from '../product-entry/product';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-inventory-component',
@@ -12,5 +14,16 @@ stock:string
 
   ngOnInit() {
   }
-
+  saveForm(product)
+  {
+    console.log('product:template',Product)
+    Object.keys(Product.controls).forEach((e)=>{
+      console.log('ctrl',product.controls[e])
+      product.controls[e].disabled()
+    })
+  }
 }
+// pValue(obj)
+// {
+//   console.log(obj)
+// }

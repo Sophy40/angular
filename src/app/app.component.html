@@ -1,46 +1,39 @@
-<!-- The content below is only a placeholder and can be replacangular6_app.component.html at master · giri4expert_angular6 -->
-   
 
 
-
-<app-product-entry>
-  
-</app-product-entry>
 <button type="button" class="btn btn-primary" (click)="isCollapsed = !isCollapsed"
-    [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">Toggle collapse
+[attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">Toggle collapse
 </button>
 <hr>
 <div id="collapseBasic" [collapse]="isCollapsed" style="margin:0; text-align: left;">
 <div class="well well-lg card card-block card-header">
-    <ul class="nav navbar-nav">
-        <li>
-            <a [routerLink]="['/product-entry']">Product Entry</a>
-          </li>  
-      <li class="active">
-          <a [routerLink]="['/product-display']">Prdouct Display</a>
-        </li>
-        <li>
-          <a [routerLink]="['/inventorycomponent']">Inventory</a>
-        </li>
-<li>
-    <a [routerLink]="['/login']">Login</a>
-</li>
-      </ul>
+<ul class="nav navbar-nav">
+    <li>
+        <a [routerLink]="['/product-entry']">Product Entry</a>
+      </li>  
+  <li class="active">
+      <a [routerLink]="['/product-display']">Prdouct Display</a>
+    </li>
+    <li>
+      <a [routerLink]="['/inventory']">Inventory</a>
+    </li>
+    <li>
+        <a [routerLink]="['/login']">Login</a>
+      </li>
+
+  </ul>
 </div>
 </div>
 
 <div class="container-fluid" style="width: 100%;">
 <div class="row" style="width:100%;">
-  <div class="col-sm-3" style="background-color: darkcyan">
-    Side Bar
-  </div>
-  <div class="col-sm-9">
-          <router-outlet>
-         
+<div class="col-sm-3" style="background-color: darkcyan">
+Side Bar
+</div>
+<div class="col-sm-9">
+      <router-outlet></router-outlet>
+</div>
+</div>
+</div>
 
-          </router-outlet>
-  </div>
-</div>
-</div>
 
    

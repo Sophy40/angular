@@ -9,8 +9,8 @@ import { BsDropdownModule, BsDropdownMenuDirective } from 'ngx-bootstrap/dropdow
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule} from '@angular/common/http';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-//import { ProductDisplayComponent } from './product-display/product-display.component'
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { InventoryComponentComponent } from './inventory-component/inventory-component.component';
@@ -18,6 +18,7 @@ import { ScalculatorComponent } from './s-calculator/s-calculator.component';
 import { CalculatorComponent } from './calculator/calculator.component';
 import {ProductService} from './product.service';
 import { LoginComponent } from './login/login.component' ;
+import { ProductdisplayComponent } from './productdisplay/productdisplay.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,8 +26,9 @@ import { LoginComponent } from './login/login.component' ;
     ScalculatorComponent,
     InventoryComponentComponent,
     CalculatorComponent,
-    LoginComponent
-    //ProductDisplayComponent
+    LoginComponent,
+    ProductdisplayComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
